@@ -1,0 +1,50 @@
+{
+  "name": "vivoi",
+  "version": "0.1.0",
+  "description": "Synchronization manager for Google Music",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://yrezgui@github.com/yrezgui/vivoi.git"
+  },
+  "keywords": [
+    "vivoi",
+    "google-music",
+    "synchro",
+    "cloud",
+    "node-webkit"
+  ],
+  "author": "Yacine Rezgui <rezgui.y@gmail.com>",
+  "license": "Apache Licence v2",
+  "bugs": {
+    "url": "https://github.com/yrezgui/vivoi/issues"
+  },
+  "homepage": "https://github.com/yrezgui/vivoi",
+  "dependencies": {
+    "flux": "^2.0.1",
+    "keymirror": "^0.1.1",
+    "lodash": "^2.4.1",
+    "object-assign": "^2.0.0",
+    "playmusic": "^1.1.1",
+    "react": "^0.12.2",
+    "superagent": "^0.21.0"
+  },
+  "devDependencies": {
+    "browserify": "^8.0.3",
+    "reactify": "^0.17.1",
+    "uglify-js": "^2.4.16",
+    "watchify": "^2.2.1"
+  },
+  "scripts": {
+    "start": "watchify --verbose -d -t reactify -o lib/main.js -- src/main.js",
+    "build": "NODE_ENV=production browserify . | uglifyjs -cm > js/bundle.min.js"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  }
+}
