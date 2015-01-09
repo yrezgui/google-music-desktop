@@ -2,9 +2,10 @@
   "name": "vivoi",
   "version": "0.1.0",
   "description": "Synchronization manager for Google Music",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "watchify --verbose -d -t reactify -o lib/main.js -- src/main.js",
+    "build": "NODE_ENV=production browserify . | uglifyjs -cm > js/bundle.min.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   "homepage": "https://github.com/yrezgui/vivoi",
   "dependencies": {
     "flux": "^2.0.1",
+    "font-awesome": "git://github.com/FortAwesome/Font-Awesome",
     "keymirror": "^0.1.1",
     "lodash": "^2.4.1",
     "object-assign": "^2.0.0",
@@ -38,13 +40,22 @@
     "uglify-js": "^2.4.16",
     "watchify": "^2.2.1"
   },
-  "scripts": {
-    "start": "watchify --verbose -d -t reactify -o lib/main.js -- src/main.js",
-    "build": "NODE_ENV=production browserify . | uglifyjs -cm > js/bundle.min.js"
-  },
   "browserify": {
     "transform": [
       "reactify"
     ]
+  },
+  "window": {
+    "title": "Vivoi",
+    "icon": "img/logo/128.png",
+    "toolbar": true,
+    "frame": true,
+    "width": 500,
+    "height": 400,
+    "position": "mouse",
+    "min_width": 500,
+    "min_height": 400,
+    "max_width": 800,
+    "max_height": 600
   }
 }
