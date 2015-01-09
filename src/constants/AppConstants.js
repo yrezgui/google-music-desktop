@@ -14,6 +14,12 @@ module.exports = {
 
   Library: keyMirror({
     UNKNOWN: null
+  }),
+
+  AlbumStatus: keyMirror({
+    NOT_DOWNLOADED: null,
+    DOWNLOADING: null,
+    DOWNLOADED: null
   })
 
 };
