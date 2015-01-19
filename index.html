@@ -12,6 +12,10 @@
         font-family: 'RobotoDraft', sans-serif;
       }
 
+      body {
+        height: initial;
+      }
+
       input:focus {
         outline: none;
       }
@@ -20,6 +24,17 @@
         color: rgba(255, 255, 255, 0.7);
       }
     </style>
+    <script>
+      if(window.require) {
+        // window.gui = require('nw.gui');
+ 
+        window.requireNode = window.require;
+        // delete window.require;
+       
+        window.requireNode.version = process.versions.node;
+        // delete process.versions.node;
+      }
+    </script>
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
   </head>
   <body>
