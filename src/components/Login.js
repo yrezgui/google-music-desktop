@@ -3,6 +3,12 @@ var assign        = require('object-assign');
 var LoginActions  = require('../actions/LoginActions');
 
 var Login = React.createClass({
+  getInitialState: function() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
   mixins: [React.addons.LinkedStateMixin],
   onSubmit: function() {
     LoginActions.saveLogin(this.state.email, this.state.password);
