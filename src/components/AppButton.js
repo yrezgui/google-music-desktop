@@ -1,7 +1,9 @@
-var React = require('react/addons');
+var React     = require('react/addons');
+var ApiUtils  = require('../utils/ApiUtils');
 
 var AppButton = React.createClass({
   onClick: function(event) {
+    ApiUtils.fetchSongs();
     event.preventDefault();
   },
   render: function() {
