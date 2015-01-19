@@ -3,6 +3,7 @@ var keyMirror = require('keymirror');
 module.exports = {
 
   ActionTypes: keyMirror({
+    SAVE_LOGIN: null,
     FETCH_SONGS: null,
     RECEIVE_SONGS_SUCCESS: null,
     RECEIVE_SONGS_FAIL: null,
