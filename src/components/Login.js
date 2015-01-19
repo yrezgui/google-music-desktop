@@ -1,9 +1,11 @@
-var React   = require('react/addons');
-var assign  = require('object-assign');
+var React         = require('react/addons');
+var assign        = require('object-assign');
+var LoginActions  = require('../actions/LoginActions');
 
 var Login = React.createClass({
+  mixins: [React.addons.LinkedStateMixin],
   onSubmit: function() {
-    // body...
+    LoginActions.saveLogin(this.state.email, this.state.password);
   },
   render: function() {
 
@@ -42,8 +44,8 @@ var Login = React.createClass({
           Vivoi
         </h1>
         <form style={formStyle}>
-          <input type="text" style={inputStyle} placeholder="Email" />
-          <input type="password" style={inputStyle} placeholder="Password" />
+          <input type="text" style={inputStyle} placeholder="Email" valueLink={this.linkState('email')} />
+          <input type="password" style={inputStyle} placeholder="Password" valueLink={this.linkState('password')} />
           <i className="fa fa-check" style={iconStyle} onClick={this.onSubmit}></i>
         </form>
       </div>
