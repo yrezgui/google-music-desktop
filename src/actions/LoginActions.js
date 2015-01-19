@@ -14,7 +14,6 @@ module.exports = {
     });
 
     LoginUtils.saveGoogleLogin(email, password)
-      .then(LoginUtils.getGoogleLogin())
       .then(ApiUtils.executeSignIn)
       .catch(ApiUtils.onEmptyLogin);
   }
