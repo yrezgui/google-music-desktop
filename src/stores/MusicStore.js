@@ -38,7 +38,8 @@ var MusicStore = assign({}, EventEmitter.prototype, {
         title: song.title,
         size: song.estimatedSize,
         lastModified: song.lastModifiedTimestamp,
-        playCount: song.playCount
+        playCount: song.playCount,
+        status: AppConstants.AlbumStatus.NOT_DOWNLOADED
       });
     });
 
@@ -68,7 +69,7 @@ MusicStore.dispatchToken = AppDispatcher.register(function(payload) {
 
   switch(action.type) {
 
-    case ActionTypes.RECEIVE_LOCAL_SONGS:
+    case ActionTypes.RECEIVE_SONGS:
       MusicStore.init(action.rawSongs);
       MusicStore.emitChange();
       break;
