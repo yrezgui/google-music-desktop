@@ -7,7 +7,7 @@ var Loading = React.createClass({
     var containerStyle = {
       textAlign: 'center',
       position: 'relative',
-      top: '100px'
+      top: '200px'
     };
 
     return (
