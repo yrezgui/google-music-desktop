@@ -2,7 +2,7 @@
   "name": "vivoi",
   "version": "0.1.0",
   "description": "Synchronization manager for Google Music",
-  "main": "index.html",
+  "main": "index.js",
   "scripts": {
     "watch": "watchify --verbose -d -t reactify -o lib/main.js -- src/main.js",
     "build": "NODE_ENV=production browserify . | uglifyjs -cm > js/bundle.min.js"
@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "browserify": "^8.0.3",
+    "jest-cli": "^0.2.1",
     "reactify": "^0.17.1",
     "uglify-js": "^2.4.16",
     "watchify": "^2.2.1"
