@@ -1,5 +1,5 @@
-var React = require('react/addons');
-var Status = require('../constants/AppConstants').AlbumStatus;
+var React   = require('react/addons');
+var Status  = require('../constants/AppConstants').AlbumStatus;
 
 var Album = React.createClass({
   getInitialState: function() {
@@ -8,10 +8,6 @@ var Album = React.createClass({
     }
   },
   download: function(event) {
-    if(!confirm('Do you want to download this album')) {
-      return;
-    }
-
     this.setState({status: Status.DOWNLOADING});
 
     setTimeout(function() {
@@ -65,7 +61,7 @@ var Album = React.createClass({
       position: 'relative',
       float: 'right',
       fontSize: '16px',
-      color: this.state.status === Status.DOWNLOADED ? '#0077c0' :'#ddd',
+      color: this.state.status === Status.DOWNLOADED ? '#0077c0' :'#cccccc',
       cursor: 'pointer'
     };
 
