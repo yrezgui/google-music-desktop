@@ -1,4 +1,4 @@
-![logo](logo.svg)
+![logo](img/logo/128.png)
 # Vivoi
 
 Vivoi is a desktop Google Music manager. It's currently running only on Atom-Shell. I will work on a Google Chrome packaged app and Firefox OS app.
