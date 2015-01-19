@@ -23,12 +23,12 @@ module.exports = {
     }
 
     try {
-      window.localStorage.saveItem(AppConstants.Login.EMAIL_KEY, email);
-      window.localStorage.saveItem(AppConstants.Login.EMAIL_KEY, email);
+      window.localStorage.setItem(AppConstants.Login.EMAIL_KEY, email);
+      window.localStorage.setItem(AppConstants.Login.PASSWORD_KEY, password);
     } catch(e) {
       return Promise.reject(e);
     }
 
-    return Promise.resolve('Login saved');
+    return Promise.resolve({email: email, password: password});
   }
 };
