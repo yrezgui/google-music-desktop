@@ -4,16 +4,16 @@ module.exports = {
 
   ActionTypes: keyMirror({
     SAVE_LOGIN: null,
-    FETCH_SONGS: null,
-    RECEIVE_SONGS_SUCCESS: null,
-    RECEIVE_SONGS_FAIL: null,
+    FETCH_LIBRARY: null,
+    FETCH_LIBRARY_SUCCESS: null,
+    FETCH_LIBRARY_FAIL: null,
     DOWNLOAD_ALBUM: null,
-    START_DOWNLOADING_SONG: null,
-    FINISH_DOWNLOADING_SONG: null,
-    EXECUTE_SIGNIN: null,
-    EXECUTE_SIGNIN_SUCCESS: null,
-    EXECUTE_SIGNIN_FAIL: null,
-    EXECUTE_SIGNIN_LOGIN_EMPTY: null
+    DOWNLOAD_ALBUM_SUCCESS: null,
+    DOWNLOAD_ALBUM_FAIL: null,
+    SIGN_IN: null,
+    SIGN_IN_SUCCESS: null,
+    SIGN_IN_FAIL: null,
+    SIGN_IN_LOGIN_EMPTY: null
   }),
 
   PayloadSources: keyMirror({
@@ -44,13 +44,14 @@ module.exports = {
 
   Folders: {
     HOME: process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE,
-    DOWNLOADS: '/Downloads'
+    DOWNLOADS: '/Downloads/'
   },
 
-  Errors: keyMirror({
-    EMPTY_LOGIN: null,
-    WRONG_LOGIN: null
-  }),
+  Errors: {
+    EMPTY_LOGIN: 'EMPTY_LOGIN',
+    WRONG_LOGIN: 'WRONG_LOGIN',
+    EXISTING_FOLDER: 'EEXIST'
+  },
 
   Channels: keyMirror({
     MAIN: null

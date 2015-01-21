@@ -10,5 +10,5 @@ React.render(
 );
 
 LoginUtils.getGoogleLogin()
-  .then(ApiUtils.executeSignIn)
+  .then(ApiUtils.signIn)
   .catch(ApiUtils.onEmptyLogin);

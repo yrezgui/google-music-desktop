@@ -3,8 +3,7 @@ var ApiUtils  = require('../utils/ApiUtils');
 
 var AppButton = React.createClass({
   onClick: function(event) {
-    ApiUtils.fetchSongs();
-    event.preventDefault();
+    ApiUtils.fetchLibrary();
   },
   render: function() {
 

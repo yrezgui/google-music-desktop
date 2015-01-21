@@ -4,38 +4,38 @@ var AppConstants  = require('../constants/AppConstants');
 var ActionTypes = AppConstants.ActionTypes;
 
 module.exports = {
-  executeSignIn: function(email, password) {
+  signIn: function(email, password) {
     AppDispatcher.handleServerAction({
-      type: ActionTypes.EXECUTE_SIGNIN,
+      type: ActionTypes.SIGN_IN,
       email: email
     });
   },
-  onSignInSuccess: function(error) {
+  signInSuccess: function(error) {
     AppDispatcher.handleServerAction({
-      type: ActionTypes.EXECUTE_SIGNIN_SUCCESS,
+      type: ActionTypes.SIGN_IN_SUCCESS,
       error: error
     });
   },
-  onSignInFail: function(email, password) {
+  signInFail: function(email, password) {
     AppDispatcher.handleServerAction({
-      type: ActionTypes.EXECUTE_SIGNIN_FAIL,
+      type: ActionTypes.SIGN_IN_FAIL,
       error: error
     });
   },
   onEmptyLogin: function(error) {
     AppDispatcher.handleServerAction({
-      type: ActionTypes.EXECUTE_SIGNIN_LOGIN_EMPTY,
+      type: ActionTypes.SIGN_IN_LOGIN_EMPTY,
       error: error
     });
   },
-  fetchSongs: function() {
+  fetchLibrary: function() {
     AppDispatcher.handleServerAction({
-      type: ActionTypes.FETCH_SONGS
+      type: ActionTypes.FETCH_LIBRARY
     });
   },
-  receiveSongs: function(rawSongs) {
+  fetchLibrarySuccess: function(rawSongs) {
     AppDispatcher.handleServerAction({
-      type: ActionTypes.RECEIVE_SONGS,
+      type: ActionTypes.FETCH_LIBRARY_SUCCESS,
       rawSongs: rawSongs
     });
   },
@@ -45,10 +45,10 @@ module.exports = {
       album: album
     });
   },
-  downloadSong: function(path, song) {
+  downloadAlbumSuccess: function(albumId) {
     AppDispatcher.handleServerAction({
-      type: ActionTypes.RECEIVE_LOCAL_SONGS,
-      rawSongs: rawSongs
+      type: ActionTypes.DOWNLOAD_ALBUM_SUCCESS,
+      albumId: albumId
     });
   }
 };

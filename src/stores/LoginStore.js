@@ -33,13 +33,13 @@ LoginStore.dispatchToken = AppDispatcher.register(function(payload) {
 
   switch(action.type) {
 
-    case ActionTypes.EXECUTE_SIGNIN_SUCCESS:
+    case ActionTypes.SIGN_IN_SUCCESS:
       _status = AppConstants.LoginStatus.SIGNED_IN;
       LoginStore.emitChange();
       break;
 
-    case ActionTypes.EXECUTE_SIGNIN_LOGIN_EMPTY:
-    case ActionTypes.EXECUTE_SIGNIN_FAIL:
+    case ActionTypes.SIGN_IN_LOGIN_EMPTY:
+    case ActionTypes.SIGN_IN_FAIL:
       _status = AppConstants.LoginStatus.SIGNED_OUT;
       LoginStore.emitChange();
       break;

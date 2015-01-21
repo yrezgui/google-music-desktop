@@ -5,38 +5,47 @@ var LoginStore    = require('../stores/LoginStore');
 var ipc           = window.requireNode('ipc');
 
 var ApiUtils = {
-  fetchSongs: function() {
-    ServerActions.fetchSongs();
+  fetchLibrary: function() {
+    ServerActions.fetchLibrary();
 
     ipc.send(AppConstants.Channels.MAIN, {
-      action: ActionTypes.FETCH_SONGS
+      action: ActionTypes.FETCH_LIBRARY
     });
   },
-  executeSignIn: function(config) {
-    ServerActions.executeSignIn(config.email);
+  signIn: function(config) {
+    ServerActions.signIn(config.email);
 
     ipc.send(AppConstants.Channels.MAIN, {
-      action: ActionTypes.EXECUTE_SIGNIN,
+      action: ActionTypes.SIGN_IN,
       config: config
     });
   },
-  onSignInSuccess: function(response) {
-    ServerActions.onSignInSuccess(response.data);
+  downloadAlbum: function(album) {
+    ipc.send(AppConstants.Channels.MAIN, {
+      action: ActionTypes.DOWNLOAD_ALBUM,
+      album: album
+    });
+  },
+  signInSuccess: function(response) {
+    ServerActions.signInSuccess(response.data);
     console.log('SUCCESS', response);
 
-    ApiUtils.fetchSongs();
+    ApiUtils.fetchLibrary();
   },
-  onSignInFail: function(response) {
-    ServerActions.onSignInSuccess(response.error);
+  signInFail: function(response) {
+    ServerActions.signInSuccess(response.error);
     console.log('ERROR', response);
   },
   onEmptyLogin: function(error) {
     ServerActions.onEmptyLogin(error);
     console.log('ERROR', error);
   },
-  onReceiveSongs: function(response) {
-    ServerActions.receiveSongs(response.library.data.items);
-  }
+  fetchLibrarySuccess: function(response) {
+    ServerActions.fetchLibrarySuccess(response.library.data.items);
+  },
+  downloadAlbumSuccess: function(response) {
+    ServerActions.downloadAlbumSuccess(response.albumId);
+  },
 };
 
 
@@ -44,16 +53,20 @@ ipc.on(AppConstants.Channels.MAIN, function(response) {
 
   switch(response.action) {
 
-    case ActionTypes.EXECUTE_SIGNIN_SUCCESS:
-      ApiUtils.onSignInSuccess(response);
+    case ActionTypes.SIGN_IN_SUCCESS:
+      ApiUtils.signInSuccess(response);
       break;
 
-    case ActionTypes.EXECUTE_SIGNIN_FAIL:
-      ApiUtils.onSignInFail(response);
+    case ActionTypes.SIGN_IN_FAIL:
+      ApiUtils.signInFail(response);
       break;
 
-    case ActionTypes.RECEIVE_SONGS_SUCCESS:
-      ApiUtils.onReceiveSongs(response);
+    case ActionTypes.FETCH_LIBRARY_SUCCESS:
+      ApiUtils.fetchLibrarySuccess(response);
+      break;
+
+    case ActionTypes.DOWNLOAD_ALBUM_SUCCESS:
+      ApiUtils.downloadAlbumSuccess(response);
       break;
   }
 });
