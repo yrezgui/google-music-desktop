@@ -1,18 +1,10 @@
-var React   = require('react/addons');
-var Status  = require('../constants/AppConstants').AlbumStatus;
+var React       = require('react/addons');
+var Status      = require('../constants/AppConstants').AlbumStatus;
+var SyncActions = require('../actions/SyncActions');
 
 var Album = React.createClass({
-  getInitialState: function() {
-    return {
-      status: Status.NOT_DOWNLOADED
-    }
-  },
   download: function(event) {
-    this.setState({status: Status.DOWNLOADING});
-
-    setTimeout(function() {
-      this.setState({status: Status.DOWNLOADED});
-    }.bind(this), 2500);
+    SyncActions.downloadAlbum(this.props.model);
   },
   render: function() {
     var cx = React.addons.classSet;
@@ -53,15 +45,15 @@ var Album = React.createClass({
 
     var iconClasses = cx({
       'fa': true,
-      'fa-cloud-download': (this.state.status === Status.NOT_DOWNLOADED || Status.DOWNLOADED),
-      'fa-circle-o-notch fa-spin': (this.state.status === Status.DOWNLOADING)
+      'fa-cloud-download': (this.props.model.status === Status.NOT_DOWNLOADED || Status.DOWNLOADED),
+      'fa-circle-o-notch fa-spin': (this.props.model.status === Status.DOWNLOADING)
     });
 
     var iconStyle = {
       position: 'relative',
       float: 'right',
       fontSize: '16px',
-      color: this.state.status === Status.DOWNLOADED ? '#0077c0' :'#cccccc',
+      color: this.props.model.status === Status.DOWNLOADED ? '#0077c0' :'#cccccc',
       cursor: 'pointer'
     };
 
