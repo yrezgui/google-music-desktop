@@ -28,11 +28,10 @@
     "flux": "^2.0.1",
     "font-awesome": "git://github.com/FortAwesome/Font-Awesome",
     "keymirror": "^0.1.1",
-    "lodash": "^2.4.1",
     "object-assign": "^2.0.0",
     "playmusic": "^1.1.1",
     "react": "^0.12.2",
-    "superagent": "^0.21.0"
+    "request": "^2.51.0"
   },
   "devDependencies": {
     "browserify": "^8.0.3",
