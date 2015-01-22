@@ -34,6 +34,19 @@ npm run-script watch
 Just run Atom Shell from the root of your folder project.
 
 
+
+## Releases
+
+### [0.1.0](https://github.com/yrezgui/vivoi/releases/tag/0.1.0)
+- Errors aren't well handled visually and might crash the app.
+- The default folder used is Downloads and this is the full path for each song:
+
+```
+/Users/username/Downloads/AlbumArtist - AlbumName/Artist - Title.mp3
+```
+
+
+
 ## Screenshots
 ![screenshot1](screenshots/screenshot1.png)
 ![screenshot2](screenshots/screenshot2.png)
