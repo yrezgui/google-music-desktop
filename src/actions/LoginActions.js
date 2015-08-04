@@ -8,7 +8,7 @@ var ActionTypes = AppConstants.ActionTypes;
 module.exports = {
 
   saveLogin: function(email, password) {
-    AppDispatcher.handleServerAction({
+    AppDispatcher.handleViewAction({
       type: ActionTypes.SAVE_LOGIN,
       email: email
     });
