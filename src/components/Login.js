@@ -1,6 +1,7 @@
-var React         = require('react/addons');
-var assign        = require('object-assign');
-var LoginActions  = require('../actions/LoginActions');
+var React           = require('react/addons');
+var assign          = require('object-assign');
+var LoginActions    = require('../actions/LoginActions');
+var ENTER_KEY_CODE  = 13;
 
 var Login = React.createClass({
   getInitialState: function() {
@@ -12,6 +13,19 @@ var Login = React.createClass({
   mixins: [React.addons.LinkedStateMixin],
   onSubmit: function() {
     LoginActions.saveLogin(this.state.email, this.state.password);
+  },
+  onKeyDown: function(event) {
+    if (event.keyCode !== ENTER_KEY_CODE) {
+      return;
+    }
+
+    event.preventDefault();
+
+    if(!this.state.email || !this.state.password) {
+      return;
+    }
+
+    this.onSubmit();
   },
   render: function() {
 
@@ -49,7 +63,7 @@ var Login = React.createClass({
           <img src="logo.svg" style={{verticalAlign: 'middle'}} /> 
           Vivoi
         </h1>
-        <form style={formStyle}>
+        <form style={formStyle} onKeyDown={this.onKeyDown}>
           <input type="text" style={inputStyle} placeholder="Email" valueLink={this.linkState('email')} />
           <input type="password" style={inputStyle} placeholder="Password" valueLink={this.linkState('password')} />
           <i className="fa fa-check" style={iconStyle} onClick={this.onSubmit}></i>
